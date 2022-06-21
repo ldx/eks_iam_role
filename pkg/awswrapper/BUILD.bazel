@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "awswrapper",
+    srcs = ["awswrapper.go"],
+    importpath = "github.com/ldx/rules_eks_iam_role/pkg/awswrapper",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_aws_aws_sdk_go//aws",
+        "@com_github_aws_aws_sdk_go//aws/awserr",
+        "@com_github_aws_aws_sdk_go//aws/session",
+        "@com_github_aws_aws_sdk_go//service/eks",
+        "@com_github_aws_aws_sdk_go//service/eks/eksiface",
+        "@com_github_aws_aws_sdk_go//service/iam",
+        "@com_github_aws_aws_sdk_go//service/iam/iamiface",
+        "@com_github_aws_aws_sdk_go//service/sts",
+        "@com_github_aws_aws_sdk_go//service/sts/stsiface",
+        "@com_github_pkg_errors//:errors",
+    ],
+)
+
+go_test(
+    name = "awswrapper_test",
+    srcs = ["awswrapper_test.go"],
+    embed = [":awswrapper"],
+    deps = [
+        "@com_github_aws_aws_sdk_go//service/eks",
+        "@com_github_aws_aws_sdk_go//service/eks/eksiface",
+        "@com_github_stretchr_testify//assert",
+    ],
+)
