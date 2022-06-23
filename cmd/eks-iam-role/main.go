@@ -1,8 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
+	"os"
+	"path/filepath"
 
 	"github.com/jessevdk/go-flags"
 	"github.com/ldx/rules_eks_iam_role/pkg/awswrapper"
@@ -23,6 +26,19 @@ var opts struct {
 func main() {
 	if _, err := flags.Parse(&opts); err != nil {
 		log.Fatalf("Parsing flags: %v", err)
+	}
+	dir, _ := os.Getwd()
+	fmt.Printf("%s\n", dir)
+	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			fmt.Println(err)
+			return err
+		}
+		fmt.Printf("dir: %v: name: %s\n", info.IsDir(), path)
+		return nil
+	})
+	if err != nil {
+		fmt.Println(err)
 	}
 	if opts.OIDCIssuer == "" && opts.ClusterName == "" {
 		log.Fatal("Either --oidc-issuer or --cluster-name need to be set")
