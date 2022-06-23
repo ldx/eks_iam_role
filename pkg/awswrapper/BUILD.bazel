@@ -24,8 +24,12 @@ go_test(
     srcs = ["awswrapper_test.go"],
     embed = [":awswrapper"],
     deps = [
+        "@com_github_aws_aws_sdk_go//aws",
+        "@com_github_aws_aws_sdk_go//aws/awserr",
         "@com_github_aws_aws_sdk_go//service/eks",
         "@com_github_aws_aws_sdk_go//service/eks/eksiface",
+        "@com_github_aws_aws_sdk_go//service/iam",
+        "@com_github_aws_aws_sdk_go//service/iam/iamiface",
         "@com_github_stretchr_testify//assert",
     ],
 )

@@ -1,4 +1,5 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
+load("//:eks_iam_role.bzl", "eks_iam_role")
 
 gazelle(
     name = "gazelle",
@@ -16,4 +17,15 @@ gazelle(
 gazelle(
     name = "gazelle-fix",
     command = "fix",
+)
+
+eks_iam_role(
+    name = "test",
+    namespace = "test-namespace",
+    oidc_issuer = "test-issuer",
+    policy_document = ":examples/s3.json",
+    service_account = "test-service-account",
+    #outs = [
+    #    "test-role.yaml",
+    #],
 )
