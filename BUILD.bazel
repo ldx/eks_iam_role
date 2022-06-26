@@ -25,7 +25,4 @@ eks_iam_role(
     oidc_issuer = "test-issuer",
     policy_document = ":examples/s3.json",
     service_account = "test-service-account",
-    #outs = [
-    #    "test-role.yaml",
-    #],
 )
