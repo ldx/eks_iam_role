@@ -37,15 +37,14 @@ def _eks_iam_role(ctx):
     if ctx.attr.oidc_issuer:
         args.extend(["--oidc-issuer", ctx.attr.oidc_issuer])
 
-    out = ctx.actions.declare_file(ctx.label.name)
     ctx.actions.write(
-        output = out,
+        output = ctx.outputs.executable,
         content = "%s %s" % (ctx.executable.tool.short_path, " ".join(args)),
+        is_executable = True,
     )
 
     return DefaultInfo(
         executable = ctx.outputs.executable,
-        files = depset([out]),
         runfiles = ctx.runfiles(files = ctx.attr.policy_document.files.to_list() + [ctx.executable.tool]),
     )
 
