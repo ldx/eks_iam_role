@@ -1,4 +1,4 @@
-module github.com/ldx/rules_eks_iam_role
+module github.com/ldx/eks_iam_role
 
 go 1.18
 

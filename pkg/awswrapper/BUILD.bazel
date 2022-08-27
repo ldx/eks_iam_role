@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "awswrapper",
     srcs = ["awswrapper.go"],
-    importpath = "github.com/ldx/rules_eks_iam_role/pkg/awswrapper",
+    importpath = "github.com/ldx/eks_iam_role/pkg/awswrapper",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_aws_aws_sdk_go//aws",

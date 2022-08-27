@@ -3,7 +3,7 @@ load("//:eks_iam_role.bzl", "eks_iam_role")
 
 gazelle(
     name = "gazelle",
-    prefix = "github.com/ldx/rules_eks_iam_role",
+    prefix = "github.com/ldx/eks_iam_role",
 )
 
 gazelle(

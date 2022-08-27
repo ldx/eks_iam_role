@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/jessevdk/go-flags"
-	"github.com/ldx/rules_eks_iam_role/pkg/awswrapper"
+	"github.com/ldx/eks_iam_role/pkg/awswrapper"
 )
 
 var opts struct {

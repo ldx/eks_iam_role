@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "eks-iam-role_lib",
     srcs = ["main.go"],
-    importpath = "github.com/ldx/rules_eks_iam_role/cmd/eks-iam-role",
+    importpath = "github.com/ldx/eks_iam_role/cmd/eks-iam-role",
     visibility = ["//visibility:private"],
     deps = [
         "//pkg/awswrapper",
