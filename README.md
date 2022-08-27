@@ -1,12 +1,12 @@
 # Eks-iam-role
 
-This program creates or updates [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html). The IAM role can then be associated to a Kubernetes service accounts via a service account token that is automounted into pods, thus pods can assume the role.
+This program creates or updates [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html). The IAM role can then be associated to a Kubernetes service account via a service account token that is automounted into pods, thus pods can assume the role.
 
 ## Use case
 
 Eks-iam-role is a simple and lightweight alternative to `eksctl create iamserviceaccount` that works in an idempotent way: you can run it multiple times with the same arguments, or change the policy file, and `eks-iam-role` will ensure that the IAM policy is up to date, it is attached to the IAM role (which is created if necessary), and it is associated with the right service account.
 
-Please note that `eks-iam-role` will not create the Kubernetes namespace, service account and set up RBAC for it. That can be done the usual way via Kubernetes manifests.
+Please note that `eks-iam-role` will not create the Kubernetes namespace, service account or set up RBAC for it. That can be done the usual way via Kubernetes manifests.
 
 ## Build
 
@@ -15,6 +15,8 @@ Install [Bazelisk](https://github.com/bazelbuild/bazelisk), then:
     bazel build //...
 
 This will build the main binary.
+
+Note: the first build might take a while since it needs to download the right Go toolchain.
 
 ## Install
 
